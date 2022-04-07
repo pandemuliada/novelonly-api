@@ -3,7 +3,8 @@ const chapters = require("../novels/the-beginning-after-the-end.json");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json(chapters);
+  const formatted = chapters.map(({ content, ...chapter }) => chapter);
+  res.json(formatted);
 });
 
 router.get("/:index", (req, res) => {
